@@ -1,7 +1,7 @@
 from functools import wraps
 
 
-def byte_encoder(function: callable) -> callable:
+def byte_encoded(function: callable) -> callable:
     """
     Converts function input from string to bytes and function output from bytes to string.
     """

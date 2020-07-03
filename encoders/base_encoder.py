@@ -3,9 +3,9 @@ from abc import ABC, abstractmethod
 
 class BaseEncoder(ABC):
     @staticmethod
-    def encode(buffer: str) -> bytes:
+    def encode(buffer: str) -> str:
         pass
 
     @staticmethod
-    def decode(buffer: bytes) -> bytes:
+    def decode(buffer: str) -> str:
         pass
