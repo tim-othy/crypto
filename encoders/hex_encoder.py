@@ -1,10 +1,10 @@
 from binascii import unhexlify, hexlify
 
-from decorators.byte_encoded import byte_encoded
-from encoders.base_encoder import BaseEncoder
+from encoders.byte_encoded import byte_encoded
+from encoders.encoder import Encoder
 
 
-class HexEncoder(BaseEncoder):
+class HexEncoder(Encoder):
     @staticmethod
     @byte_encoded
     def encode(input: str) -> str:

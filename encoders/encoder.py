@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class BaseEncoder(ABC):
+class Encoder(ABC):
     @staticmethod
     def encode(buffer: str) -> str:
         pass

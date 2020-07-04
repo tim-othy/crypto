@@ -1,10 +1,10 @@
 from base64 import b64encode, b64decode
 
-from decorators.byte_encoded import byte_encoded
-from encoders.base_encoder import BaseEncoder
+from encoders.byte_encoded import byte_encoded
+from encoders.encoder import Encoder
 
 
-class Base64Encoder(BaseEncoder):
+class Base64Encoder(Encoder):
     @staticmethod
     @byte_encoded
     def encode(input: str) -> str:
