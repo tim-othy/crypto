@@ -5,14 +5,18 @@ from encoders.encoder import Encoder
 
 class Xor(Cipher):
     @staticmethod
-    def _xor(buffer1: str, buffer2: str, encoder: Optional[Encoder] = None) -> str:
+    def encrypt(key: str, text: str, encoder: Optional[Encoder] = None) -> str:
+        return Xor._xor(key, text, encoder)
+
+    @staticmethod
+    def decrypt(key: str, text: str, encoder: Optional[Encoder] = None) -> str:
+        return Xor._xor(key, text, encoder)
+
+    @staticmethod
+    def _xor(key: str, text: str, encoder: Optional[Encoder] = None) -> str:
         _ = lambda buffer: encoder.decode(buffer) if encoder else buffer
-        return "".join([chr(ord(a) ^ ord(b)) for a, b in zip(_(buffer1), _(buffer2))])
+        return "".join([chr(ord(a) ^ ord(b)) for a, b in zip(_(Xor._pad_key(key, text)), _(text))])
 
     @staticmethod
-    def encrypt(buffer1: str, buffer2: str, encoder: Optional[Encoder] = None) -> str:
-        return Xor._xor(buffer1, buffer2, encoder)
-
-    @staticmethod
-    def decrypt(buffer1: str, buffer2: str, encoder: Optional[Encoder] = None) -> str:
-        return Xor._xor(buffer1, buffer2, encoder)
+    def _pad_key(key: str, text: str) -> str:
+        return (key*len(text))[:len(text)] if len(key) != len(text) else key
