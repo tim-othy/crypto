@@ -15,7 +15,8 @@ class Xor(Cipher):
     @staticmethod
     def _xor(key: str, text: str, encoder: Optional[Encoder] = None) -> str:
         _ = lambda buffer: encoder.decode(buffer) if encoder else buffer
-        return "".join([chr(ord(a) ^ ord(b)) for a, b in zip(_(Xor._pad_key(key, text)), _(text))])
+        padded_key = Xor._pad_key(key, text)
+        return "".join([chr(ord(a) ^ ord(b)) for a, b in zip(_(padded_key), _(text))])
 
     @staticmethod
     def _pad_key(key: str, text: str) -> str:

@@ -25,6 +25,5 @@ class FrequencyAnalyzer:
 
     def get_most_likely_plaintext(self, ciphertext: str, cipher: Cipher, encoder: Optional[Encoder] = None) -> list:
         message = encoder.decode(ciphertext) if encoder else ciphertext
-        decrypt = lambda key, text: cipher.decrypt(key, text)
-        text_scores = {decrypt(letter*len(message), message): self.score_text(decrypt(letter*len(message), message)) for letter in self.alphabet}
+        text_scores = {cipher.decrypt(letter, message): self.score_text(cipher.decrypt(letter, message)) for letter in self.alphabet}
         return [text for text,score in text_scores.items() if score == max(text_scores.values())]
