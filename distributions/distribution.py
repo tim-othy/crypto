@@ -8,9 +8,5 @@ class Distribution(ABC):
         pass
 
     @staticmethod
-    def digraph_distribution():
-        pass
-
-    @staticmethod
-    def trigraph_distribution():
+    def get_digraph_distribution():
         pass
