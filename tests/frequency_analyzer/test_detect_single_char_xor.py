@@ -4,12 +4,12 @@ from unittest import TestCase
 
 from ciphers.single_char_xor import SingleCharXor
 from distributions.english_distribution import EnglishDistribution
-from estimators.estimator import Estimator
+from estimators.single_char_xor_estimator import SingleCharXorEstimator
 
 
 class TestDetectSingleCharXor(TestCase):
     def setUp(self):
-        self.estimator = Estimator(EnglishDistribution, SingleCharXor)
+        self.estimator = SingleCharXorEstimator(EnglishDistribution, SingleCharXor)
 
     def test_detect_single_char_xor(self):
         with open(f"{self._get_fixtures_path()}/single_char_xor.txt", "r") as file:

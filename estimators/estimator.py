@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 from collections import OrderedDict
 from string import printable
 
@@ -7,13 +8,12 @@ from ciphers.cipher import Cipher
 from distributions.distribution import Distribution
 
 
-class Estimator:
+class Estimator(ABC):
     def __init__(self, distribution: Distribution, cipher: Cipher):
         self.alphabet = printable
         self.char_distribution = distribution.get_char_distribution()
         self.cipher = cipher
         self.digraph_distribution = distribution.get_digraph_distribution()
-
 
     @staticmethod
     def get_distribution_similarity(text_distribution: OrderedDict, language_distribution) -> float:
@@ -38,10 +38,6 @@ class Estimator:
         )
         return (char_distance * digraph_distance) / len(text)
 
+    @abstractmethod
     def estimate_plaintext_key_pair(self, ciphertext: str) -> list:
-        score_text_pairs = {
-            self.score_text(self.cipher.decrypt(letter, ciphertext)): (self.cipher.decrypt(letter, ciphertext), letter)
-            for letter in self.alphabet
-        }
-
-        return score_text_pairs[max(score_text_pairs.keys())]
+        pass

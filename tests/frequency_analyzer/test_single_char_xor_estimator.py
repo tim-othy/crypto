@@ -5,12 +5,12 @@ from unittest import TestCase
 from ciphers.xor import Xor
 from distributions.english_distribution import EnglishDistribution
 from encoders.hex_encoder import HexEncoder
-from estimators.estimator import Estimator
+from estimators.single_char_xor_estimator import SingleCharXorEstimator
 
 
-class TestXorEstimator(TestCase):
+class TestSingleCharXorEstimator(TestCase):
     def setUp(self):
-        self.estimator = Estimator(EnglishDistribution, Xor)
+        self.estimator = SingleCharXorEstimator(EnglishDistribution, Xor)
 
     def test_hellinger_distance_of_distribution_with_itself(self):
         self.assertEqual(
