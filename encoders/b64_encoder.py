@@ -7,8 +7,8 @@ from encoders.encoder import Encoder
 class Base64Encoder(Encoder):
     @staticmethod
     @byte_encoded
-    def encode(input: str) -> str:
-        return b64encode(input)
+    def encode(string: str) -> str:
+        return b64encode(string)
 
     @staticmethod
     @byte_encoded

@@ -3,6 +3,7 @@ from ciphers.cipher import Cipher
 
 from encoders.encoder import Encoder
 
+
 class Xor(Cipher):
     @staticmethod
     def encrypt(key: str, text: str, encoder: Optional[Encoder] = None) -> str:
@@ -20,4 +21,4 @@ class Xor(Cipher):
 
     @staticmethod
     def _pad_key(key: str, text: str) -> str:
-        return (key*len(text))[:len(text)] if len(key) != len(text) else key
+        return (key * len(text))[:len(text)] if len(key) != len(text) else key

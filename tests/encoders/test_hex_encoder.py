@@ -1,6 +1,7 @@
 from unittest import TestCase
 from encoders.hex_encoder import HexEncoder
 
+
 class TestHexEncoder(TestCase):
     def test_encode(self):
         source = "I'm killing your brain like a poisonous mushroom"
