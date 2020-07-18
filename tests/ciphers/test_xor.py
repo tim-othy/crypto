@@ -10,7 +10,7 @@ class TestXor(TestCase):
         hex2 = "686974207468652062756c6c277320657965"
         target = "746865206b696420646f6e277420706c6179"
 
-        self.assertEqual(HexEncoder.encode(Xor.encrypt(hex1, hex2, HexEncoder)), target)
+        self.assertEqual(HexEncoder.encode(Xor.encrypt(HexEncoder.decode(hex1), HexEncoder.decode(hex2))), target)
 
     def test_repeating_key_xor(self):
         plaintext = "Burning 'em, if you ain't quick and nimble\nI go crazy when I hear a cymbal"
