@@ -1,7 +1,6 @@
 from unittest import TestCase
 
 from ciphers.single_char_xor import SingleCharXor
-from encoders.hex_encoder import HexEncoder
 
 
 class TestSingleCharXor(TestCase):
