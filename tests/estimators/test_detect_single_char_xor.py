@@ -1,6 +1,4 @@
-from binascii import unhexlify
 import os
-import sys
 from unittest import TestCase
 
 from ciphers.single_char_xor import SingleCharXor
