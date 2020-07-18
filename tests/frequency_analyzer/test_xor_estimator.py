@@ -5,16 +5,16 @@ from unittest import TestCase
 from ciphers.xor import Xor
 from distributions.english_distribution import EnglishDistribution
 from encoders.hex_encoder import HexEncoder
-from frequency_analyzer.frequency_analyzer import FrequencyAnalyzer
+from estimators.estimator import Estimator
 
 
-class TestFrequencyAnalyzer(TestCase):
+class TestXorEstimator(TestCase):
     def setUp(self):
-        self.frequency_analyzer = FrequencyAnalyzer(EnglishDistribution)
+        self.estimator = Estimator(EnglishDistribution, Xor)
 
     def test_hellinger_distance_of_distribution_with_itself(self):
         self.assertEqual(
-            self.frequency_analyzer.hellinger_distance(
+            self.estimator.get_distribution_similarity(
                 EnglishDistribution.get_char_distribution(), 
                 EnglishDistribution.get_char_distribution()
             ), 
@@ -23,13 +23,13 @@ class TestFrequencyAnalyzer(TestCase):
 
     def test_generate_frequency_distribution_all_letters(self):
         target = OrderedDict({letter: 1 for letter in ascii_lowercase})
-        self.assertEqual(self.frequency_analyzer.generate_char_distribution(ascii_lowercase), target)
+        self.assertEqual(self.estimator.generate_char_distribution(ascii_lowercase), target)
 
     def test_estimate_plaintext_and_key(self):
         source = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
         target = ("Cooking MC's like a pound of bacon", "X")
 
         self.assertEqual(
-            self.frequency_analyzer.estimate_plaintext_key_pair(HexEncoder.decode(source), Xor),
+            self.estimator.estimate_plaintext_key_pair(HexEncoder.decode(source)),
             target
         )
