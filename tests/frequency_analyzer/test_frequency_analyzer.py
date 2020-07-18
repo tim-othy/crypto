@@ -30,6 +30,6 @@ class TestFrequencyAnalyzer(TestCase):
         target = ("Cooking MC's like a pound of bacon", "X")
 
         self.assertEqual(
-            self.frequency_analyzer.estimate_plaintext_key_pair(HexEncoder.decode(source), Xor, " "),
+            self.frequency_analyzer.estimate_plaintext_key_pair(HexEncoder.decode(source), Xor),
             target
         )

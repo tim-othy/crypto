@@ -16,7 +16,7 @@ class TestDetectSingleCharXor(TestCase):
 
     def test_detect_single_char_xor(self):
         with open(f"{self._get_fixtures_path()}/single_char_xor.txt", "r") as file:
-            estimate = lambda line: self.frequency_analyzer.estimate_plaintext_key_pair(unhexlify(line.encode("utf-8")), SingleCharXor, " ")
+            estimate = lambda line: self.frequency_analyzer.estimate_plaintext_key_pair(unhexlify(line.encode("utf-8")), SingleCharXor)
             estimated_plaintext_key_pairs = {estimate(line.strip()): self.frequency_analyzer.score_text(estimate(line.strip())[0]) for line in file }
             
             self.assertEqual(

@@ -30,10 +30,10 @@ class FrequencyAnalyzer:
         _ = lambda dictionary: np.sqrt(np.array(list(dictionary.values())))
         return np.sqrt(np.sum((_(language_distribution) - _(text_distribution)) ** 2)) / np.sqrt(2)
 
-    def estimate_plaintext_key_pair(self, ciphertext: str, cipher: Cipher, separator: str) -> list:
+    def estimate_plaintext_key_pair(self, ciphertext: str, cipher: Cipher) -> list:
         score_text_pairs = {
             self.score_text(cipher.decrypt(letter, ciphertext)): (cipher.decrypt(letter, ciphertext), letter)
-                for letter in self.alphabet if cipher.decrypt(letter, ciphertext).count(separator) > 0
+                for letter in self.alphabet
         }
  
         return score_text_pairs[max(score_text_pairs.keys())]
