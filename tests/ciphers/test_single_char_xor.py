@@ -10,7 +10,6 @@ class TestSingleCharXor(TestCase):
 
         self.assertRaises(ValueError, SingleCharXor.encrypt, key, text)
 
-
     def test_xor_key_different_length(self):
         key = "a"
         text = "abcdefg"
