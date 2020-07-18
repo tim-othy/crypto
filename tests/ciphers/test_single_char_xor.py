@@ -4,7 +4,7 @@ from ciphers.single_char_xor import SingleCharXor
 from encoders.hex_encoder import HexEncoder
 
 
-class TestXor(TestCase):
+class TestSingleCharXor(TestCase):
     def test_xor_key_same_length(self):
         key = "ab"
         text = "abcdefg"
