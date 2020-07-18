@@ -20,9 +20,6 @@ class TestFrequencyAnalyzer(TestCase):
 
     def test_get_most_likely_plaintext(self):
         source = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
-        target = [
-            "cOOKING\x00mc\x07S\x00LIKE\x00A\x00POUND\x00OF\x00BACON", 
-            "Cooking MC's like a pound of bacon"
-        ]
+        target = ("Cooking MC's like a pound of bacon", "X")
 
-        self.assertEqual(self.frequency_analyzer.get_most_likely_plaintext(source, Xor, HexEncoder), target)
+        self.assertEqual(self.frequency_analyzer.get_most_likely_plaintext(HexEncoder.decode(source), Xor, " "), target)
