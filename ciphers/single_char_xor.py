@@ -14,4 +14,4 @@ class SingleCharXor(Cipher):
     def _xor(key: str, text: str) -> str:
         if len(key) != 1:
             raise ValueError("Key must be single char")
-        return "".join([chr(ord(key) ^ letter) for letter in text])
+        return "".join([chr(ord(key) ^ ord(letter)) for letter in text])

@@ -16,4 +16,4 @@ class TestSingleCharXor(TestCase):
         key = "a"
         text = "abcdefg"
 
-        self.assertEqual(SingleCharXor.encrypt(key, text.encode("utf-8")), "\x00\x03\x02\x05\x04\x07\x06")
+        self.assertEqual(SingleCharXor.encrypt(key, text), "\x00\x03\x02\x05\x04\x07\x06")
