@@ -1,6 +1,6 @@
 from collections import OrderedDict
 from math import sqrt
-from string import ascii_letters, ascii_lowercase
+from string import printable, ascii_lowercase
 from typing import Optional
 
 import numpy as np
@@ -11,7 +11,7 @@ from encoders.encoder import Encoder
 class FrequencyAnalyzer:
     def __init__(self, distribution: dict):
         self.distribution = distribution
-        self.alphabet = ascii_letters
+        self.alphabet = printable
 
     def generate_frequency_distribution(self, text: str) -> dict:
         return {letter: text.lower().count(letter) for letter in ascii_lowercase}
