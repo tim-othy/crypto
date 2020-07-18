@@ -10,10 +10,16 @@ from frequency_analyzer.frequency_analyzer import FrequencyAnalyzer
 
 class TestFrequencyAnalyzer(TestCase):
     def setUp(self):
-        self.frequency_analyzer = FrequencyAnalyzer(EnglishDistribution.get_char_distribution())
+        self.frequency_analyzer = FrequencyAnalyzer(EnglishDistribution)
 
     def test_hellinger_distance_of_distribution_with_itself(self):
-        self.assertEqual(self.frequency_analyzer.hellinger_distance(EnglishDistribution.get_char_distribution()), 0.0)
+        self.assertEqual(
+            self.frequency_analyzer.hellinger_distance(
+                EnglishDistribution.get_char_distribution(), 
+                EnglishDistribution.get_char_distribution()
+            ), 
+            0.0
+        )
 
     def test_generate_frequency_distribution_all_letters(self):
         target = OrderedDict({letter: 1 for letter in ascii_lowercase})
@@ -23,4 +29,7 @@ class TestFrequencyAnalyzer(TestCase):
         source = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
         target = ("Cooking MC's like a pound of bacon", "X")
 
-        self.assertEqual(self.frequency_analyzer.estimate_plaintext_key_pair(HexEncoder.decode(source), Xor, " "), target)
+        self.assertEqual(
+            self.frequency_analyzer.estimate_plaintext_key_pair(HexEncoder.decode(source), Xor, " "),
+            target
+        )

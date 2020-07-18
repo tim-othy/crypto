@@ -6,11 +6,12 @@ from typing import Optional
 import numpy as np
 
 from ciphers.cipher import Cipher
+from distributions.distribution import Distribution
 from encoders.encoder import Encoder
 
 class FrequencyAnalyzer:
-    def __init__(self, distribution: dict):
-        self.distribution = distribution
+    def __init__(self, distribution: Distribution):
+        self.char_distribution = distribution.get_char_distribution()
         self.alphabet = printable
 
     def generate_char_distribution(self, text: str) -> dict:
@@ -20,11 +21,11 @@ class FrequencyAnalyzer:
         pass
 
     def score_text(self, text: str) -> float:
-        return self.hellinger_distance(self.generate_char_distribution(text))/len(text)
+        return self.hellinger_distance(self.generate_char_distribution(text), self.char_distribution)/len(text)
 
-    def hellinger_distance(self, distribution: OrderedDict) -> float:
+    def hellinger_distance(self, text_distribution: OrderedDict, language_distribution) -> float:
         _ = lambda dictionary: np.sqrt(np.array(list(dictionary.values())))
-        return np.sqrt(np.sum((_(self.distribution) - _(distribution)) ** 2)) / np.sqrt(2)
+        return np.sqrt(np.sum((_(language_distribution) - _(text_distribution)) ** 2)) / np.sqrt(2)
 
     def estimate_plaintext_key_pair(self, ciphertext: str, cipher: Cipher, separator: str) -> list:
         score_text_pairs = {
