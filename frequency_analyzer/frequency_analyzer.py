@@ -23,7 +23,7 @@ class FrequencyAnalyzer:
         _ = lambda dictionary: np.sqrt(np.array(list(dictionary.values())))
         return np.sqrt(np.sum((_(self.distribution) - _(distribution)) ** 2)) / np.sqrt(2)
 
-    def get_most_likely_plaintext(self, ciphertext: str, cipher: Cipher, separator: str) -> list:
+    def estimate_plaintext_and_key(self, ciphertext: str, cipher: Cipher, separator: str) -> list:
         text_scores = {
             self.score_text(cipher.decrypt(letter, ciphertext)): (cipher.decrypt(letter, ciphertext), letter)
                 for letter in self.alphabet if cipher.decrypt(letter, ciphertext).count(separator) > 0
