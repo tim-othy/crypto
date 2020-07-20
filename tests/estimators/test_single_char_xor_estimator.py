@@ -12,13 +12,12 @@ class TestSingleCharXorEstimator(TestCase):
     def setUp(self):
         self.estimator = SingleCharXorEstimator(EnglishDistribution, Xor)
 
-    def test_hellinger_distance_of_distribution_with_itself(self):
-        self.assertEqual(
-            self.estimator.get_distribution_similarity(
+    def test_bhattacharyya_coefficient_of_distribution_with_itself(self):
+        self.assertTrue(
+            self.estimator.get_bhattacharyya_coefficient(
                 EnglishDistribution.get_char_distribution(), 
                 EnglishDistribution.get_char_distribution()
-            ), 
-            0.0
+            ) > 0
         )
 
     def test_generate_frequency_distribution_all_letters(self):

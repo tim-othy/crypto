@@ -7,7 +7,8 @@ class RepeatingKeyXorEstimator(Estimator):
     def __init__(self, distribution: Distribution, cipher: Cipher):
         super().__init__(distribution, cipher)
 
-    def get_hamming_distance(self, input1: str, input2: str) -> int:
+    @staticmethod
+    def get_hamming_distance(input1: str, input2: str) -> int:
         return sum([bin(ord(a) ^ ord(b)).count("1") for a, b in zip(input1, input2)])
 
 
