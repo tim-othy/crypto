@@ -20,6 +20,17 @@ class TestSingleCharXorEstimator(TestCase):
             ) > 0
         )
 
+    def test_mutually_exclusive_distributions(self):
+        distribution1 = OrderedDict({'a': 1, 'b': 2, 'c': 3})
+        distribution2 = OrderedDict({'x': 1, 'y': 2, 'z': 3})
+        self.assertEqual(
+            self.estimator.get_bhattacharyya_coefficient(
+                distribution1,
+                distribution2
+            ),
+            0
+        )
+
     def test_generate_frequency_distribution_all_letters(self):
         target = OrderedDict({letter: 1 for letter in ascii_lowercase})
         self.assertEqual(self.estimator.generate_char_distribution(ascii_lowercase), target)
