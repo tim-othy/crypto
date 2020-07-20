@@ -7,7 +7,7 @@ class EnglishDistribution(Distribution):
     @staticmethod
     def get_char_distribution():
         return OrderedDict({
-            'a': 0.0008167,
+            'a': 0.08167,
             'b': 0.01492,
             'c': 0.02782,
             'd': 0.04253,
