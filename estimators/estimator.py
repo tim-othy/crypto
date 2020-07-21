@@ -3,7 +3,6 @@ from collections import OrderedDict
 from math import sqrt
 from string import printable
 
-from ciphers.cipher import Cipher
 from distributions.distribution import Distribution
 from utils.utils import get_intersection
 
@@ -22,10 +21,10 @@ class Estimator(ABC):
         )
 
     def generate_char_distribution(self, text: str) -> OrderedDict:
-        return OrderedDict({letter: text.lower().count(letter) for letter in self.char_distribution.keys()})
+        return OrderedDict({letter: text.count(letter) for letter in self.char_distribution.keys()})
 
     def generate_digraph_distribution(self, text: str) -> OrderedDict:
-        return OrderedDict({digraph: text.lower().count(digraph) for digraph in self.digraph_distribution.keys()})
+        return OrderedDict({digraph: text.count(digraph) for digraph in self.digraph_distribution.keys()})
 
     def score_text(self, text: str) -> float:
         char_distance = self.get_bhattacharyya_coefficient(self.generate_char_distribution(text),

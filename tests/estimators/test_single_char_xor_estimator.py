@@ -1,5 +1,5 @@
 from collections import OrderedDict
-from string import ascii_lowercase
+from string import ascii_letters
 from unittest import TestCase
 
 from distributions.english_distribution import EnglishDistribution
@@ -31,8 +31,8 @@ class TestSingleCharXorEstimator(TestCase):
         )
 
     def test_generate_frequency_distribution_all_letters(self):
-        target = OrderedDict({letter: 1 for letter in ascii_lowercase})
-        self.assertEqual(self.estimator.generate_char_distribution(ascii_lowercase), target)
+        target = OrderedDict({letter: 1 for letter in ascii_letters})
+        self.assertEqual(self.estimator.generate_char_distribution(ascii_letters), target)
 
     def test_estimate_plaintext_and_key(self):
         source = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"

@@ -36,5 +36,5 @@ def pairwise(iterable: T.Iterable) -> T.Iterator[T.Tuple[T.Any, T.Any]]:
     return zip(a, b)
 
 
-def transpose_blocks(blocks: list) -> list:
+def transpose_blocks(blocks: T.Iterable) -> T.Iterable:
     return ["".join(i) for i in map(list, zip(*blocks))]
