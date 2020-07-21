@@ -1,7 +1,6 @@
 import os
 from unittest import TestCase
 
-from ciphers.xor import Xor
 from distributions.english_distribution import EnglishDistribution
 from estimators.repeating_key_xor_estimator import RepeatingKeyXorEstimator
 

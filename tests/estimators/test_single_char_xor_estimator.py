@@ -2,7 +2,6 @@ from collections import OrderedDict
 from string import ascii_lowercase
 from unittest import TestCase
 
-from ciphers.xor import Xor
 from distributions.english_distribution import EnglishDistribution
 from encoders.hex_encoder import HexEncoder
 from estimators.single_char_xor_estimator import SingleCharXorEstimator

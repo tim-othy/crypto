@@ -1,7 +1,6 @@
 import os
 from unittest import TestCase
 
-from ciphers.single_char_xor import SingleCharXor
 from distributions.english_distribution import EnglishDistribution
 from encoders.hex_encoder import HexEncoder
 from estimators.single_char_xor_estimator import SingleCharXorEstimator
