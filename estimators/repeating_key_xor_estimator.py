@@ -5,7 +5,7 @@ from estimators.estimator import Estimator
 
 class RepeatingKeyXorEstimator(Estimator):
     def __init__(self, distribution: Distribution):
-        super().__init__(distribution, Xor)
+        super().__init__(distribution)
 
     @staticmethod
     def get_hamming_distance(input1: str, input2: str) -> int:

@@ -9,10 +9,9 @@ from utils.utils import get_intersection
 
 
 class Estimator(ABC):
-    def __init__(self, distribution: Distribution, cipher: Cipher):
+    def __init__(self, distribution: Distribution):
         self.alphabet = printable
         self.char_distribution = distribution.get_char_distribution()
-        self.cipher = cipher
         self.digraph_distribution = distribution.get_digraph_distribution()
 
     @staticmethod
