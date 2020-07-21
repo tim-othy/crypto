@@ -9,7 +9,7 @@ from estimators.single_char_xor_estimator import SingleCharXorEstimator
 
 class TestDetectSingleCharXor(TestCase):
     def setUp(self):
-        self.estimator = SingleCharXorEstimator(EnglishDistribution, SingleCharXor)
+        self.estimator = SingleCharXorEstimator(EnglishDistribution)
 
     def test_detect_single_char_xor(self):
         with open(f"{self._get_fixtures_path()}/single_char_xor.txt", "r") as file:

@@ -10,7 +10,7 @@ from estimators.single_char_xor_estimator import SingleCharXorEstimator
 
 class TestSingleCharXorEstimator(TestCase):
     def setUp(self):
-        self.estimator = SingleCharXorEstimator(EnglishDistribution, Xor)
+        self.estimator = SingleCharXorEstimator(EnglishDistribution)
 
     def test_bhattacharyya_coefficient_of_distribution_with_itself(self):
         self.assertTrue(

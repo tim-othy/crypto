@@ -8,7 +8,7 @@ from estimators.repeating_key_xor_estimator import RepeatingKeyXorEstimator
 
 class TestDetectRepeatingKeyXor(TestCase):
     def setUp(self):
-        self.estimator = RepeatingKeyXorEstimator(EnglishDistribution, Xor)
+        self.estimator = RepeatingKeyXorEstimator(EnglishDistribution)
 
     def test_get_hamming_distance(self):
         input1 = "this is a test"
@@ -23,9 +23,6 @@ class TestDetectRepeatingKeyXor(TestCase):
 
         self.assertEqual(self.estimator.get_hamming_distance(input1, input1), target)
 
-    def test_detect_single_char_xor(self):
+    def test_detect_repeating_char_xor(self):
         pass
 
-    @staticmethod
-    def _get_fixtures_path():
-        return os.path.join(os.getcwd(), "tests", "fixtures")
