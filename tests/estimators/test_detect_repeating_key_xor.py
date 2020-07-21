@@ -1,8 +1,12 @@
 import os
+from base64 import b64decode
 from unittest import TestCase
 
+from ciphers.xor import Xor
 from distributions.english_distribution import EnglishDistribution
+from encoders.b64_encoder import Base64Encoder
 from estimators.repeating_key_xor_estimator import RepeatingKeyXorEstimator
+from utils.utils import get_fixtures_path
 
 
 class TestDetectRepeatingKeyXor(TestCase):
@@ -23,5 +27,6 @@ class TestDetectRepeatingKeyXor(TestCase):
         self.assertEqual(self.estimator.get_hamming_distance(input1, input1), target)
 
     def test_detect_repeating_char_xor(self):
-        pass
-
+        with open(os.path.join(get_fixtures_path(), "repeating_key_xor.txt"), "r") as file:
+            ciphertext = Base64Encoder.decode(file.read())
+            keysize = self.estimator.estimate_keysize(ciphertext, 2, 41)
