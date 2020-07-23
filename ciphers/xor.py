@@ -1,14 +1,14 @@
-from ciphers.cipher import Cipher
+from ciphers.stateless_cipher import StatelessCipher
 
 
-class Xor(Cipher):
+class Xor(StatelessCipher):
     @staticmethod
-    def encrypt(key: str, text: str) -> str:
-        return Xor._xor(key, text)
+    def encrypt(key: str, plaintext: str) -> str:
+        return Xor._xor(key, plaintext)
 
     @staticmethod
-    def decrypt(key: str, text: str) -> str:
-        return Xor._xor(key, text)
+    def decrypt(key: str, ciphertext: str) -> str:
+        return Xor._xor(key, ciphertext)
 
     @staticmethod
     def _xor(key: str, text: str) -> str:
