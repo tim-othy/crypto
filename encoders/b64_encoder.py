@@ -13,8 +13,8 @@ class Base64Encoder(Encoder):
 
     @staticmethod
     def decode(base64: str) -> str:
-        data = re.sub(rb'[^a-zA-Z0-9%s]+' % b'+/', b'', base64.encode("ascii"))
+        data = re.sub(rb'[^a-zA-Z0-9%s]+' % b'+/', b'', base64.encode("latin-1"))
         missing_padding = len(data) % 4
         if missing_padding:
             data += b'=' * (4 - missing_padding)
-        return b64decode(data, b'+/').decode("ascii")
+        return b64decode(data, b'+/').decode("latin-1")
