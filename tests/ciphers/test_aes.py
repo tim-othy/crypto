@@ -16,6 +16,5 @@ class TestAes(TestCase):
 
             ciphertext = Base64Encoder.decode(file.read())
             plaintext = Aes.decrypt(key, ciphertext, mode)
-            print(plaintext)
 
             self.assertTrue(plaintext.startswith("I'm back and I'm ringin' the bell"))
